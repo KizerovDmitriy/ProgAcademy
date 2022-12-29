@@ -28,8 +28,15 @@ public class Main {
             e.printStackTrace();
         }
 
+        /*
         AddStudentToGroupFromKeyboard add = new AddStudentToGroupFromKeyboard();
         add.addStudentToGroup(group);
         group.sortStudentsByLastName();
+        */
+
+        CSVStringConverter csv = new CSVStringConverter();
+        String student = "Alex,Birman,MALE,12,Programing";
+        System.out.println((csv.fromStringRepresentation(student)).toString());
+        System.out.println(csv.toStringRepresentation(new Student("Alex","Birman", Gender.MALE,12,"Programing")));
     }
 }
