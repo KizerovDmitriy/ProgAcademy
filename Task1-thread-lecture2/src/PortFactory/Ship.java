@@ -1,6 +1,7 @@
 package PortFactory;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Ship {
@@ -21,8 +22,9 @@ public class Ship {
     }
 
     public void unloadShip() {
-        for (int i = 0; i < trunk.size(); i++) {
-            trunk.remove(i);
+        Iterator <Container> containerIterator = trunk.iterator();
+        while (containerIterator.hasNext()){
+            containerIterator.remove();
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
