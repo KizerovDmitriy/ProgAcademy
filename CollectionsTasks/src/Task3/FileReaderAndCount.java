@@ -7,25 +7,28 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class FileReaderAndCount {
-    private final Map<Character,Integer> result = new TreeMap<>();
+    private final Map<Character, Integer> result = new TreeMap<>();
 
-    public void readAndCount (String filePath){
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))){
-            int tmp;
-            while ((tmp = reader.read()) != -1){
-                if (result.containsKey((char) tmp)){
-                    int x = result.get((char) tmp) + 1;
-                    result.put((char) tmp,x);
+    public void readAndCount(String... filePath) {
+        if (filePath != null && filePath.length != 0) {
+            for (String s : filePath) {
+                try (BufferedReader reader = new BufferedReader(new FileReader(s))) {
+                    int tmp;
+                    while ((tmp = reader.read()) != -1) {
+                        if (result.containsKey((char) tmp)) {
+                            int x = result.get((char) tmp) + 1;
+                            result.put((char) tmp, x);
+                        } else {
+                            result.put((char) tmp, 1);
+                        }
+                    }
+                } catch (IOException e) {
+                    System.out.println("File not found");
                 }
-                else {
-                    result.put((char) tmp, 1);
-                }
+                result.entrySet().stream().
+                        sorted(Map.Entry.comparingByValue()).forEach(System.out::println);
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        result.entrySet().stream().
-                sorted(Map.Entry.comparingByValue()).forEach(System.out::println);
+        } else
+            System.out.println("Input invalid path");
     }
 }
