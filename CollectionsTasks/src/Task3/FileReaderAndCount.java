@@ -12,10 +12,11 @@ public class FileReaderAndCount {
     public void readAndCount (String filePath){
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))){
-            while (reader.read() != -1){
-                int tmp = reader.read();
+            int tmp;
+            while ((tmp = reader.read()) != -1){
                 if (result.containsKey((char) tmp)){
-                    result.computeIfPresent((char) tmp,(k,v)->++v);
+                    int x = result.get((char) tmp) + 1;
+                    result.put((char) tmp,x);
                 }
                 else {
                     result.put((char) tmp, 1);
@@ -24,6 +25,7 @@ public class FileReaderAndCount {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(result);
+        result.entrySet().stream().
+                sorted(Map.Entry.comparingByValue()).forEach(System.out::println);
     }
 }
