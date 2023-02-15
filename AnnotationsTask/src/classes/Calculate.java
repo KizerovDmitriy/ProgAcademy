@@ -17,24 +17,20 @@ public class Calculate {
         counts.put(ParameterAnnotation.class, 0);
     }
 
-    public void countMethodAndParameters(Class<?> clazz) {
-        if (clazz == Object.class) {
-            return;
-        }
-        for (Method method : clazz.getDeclaredMethods()) {
-            if (method.isAnnotationPresent(MethodAnnotation.class)) {
-                counts.computeIfPresent(MethodAnnotation.class, (k, v) -> ++v);
-            }
-            for (Parameter parameter : method.getParameters()) {
-                if (parameter.isAnnotationPresent(ParameterAnnotation.class)) {
-                    counts.computeIfPresent(ParameterAnnotation.class, (k, v) -> ++v);
+    public Map<Class<?>, Integer> countMethodAndParameters(Class<?> clazz) {
+        if (clazz != Object.class) {
+            for (Method method : clazz.getDeclaredMethods()) {
+                if (method.isAnnotationPresent(MethodAnnotation.class)) {
+                    counts.computeIfPresent(MethodAnnotation.class, (k, v) -> ++v);
+                }
+                for (Parameter parameter : method.getParameters()) {
+                    if (parameter.isAnnotationPresent(ParameterAnnotation.class)) {
+                        counts.computeIfPresent(ParameterAnnotation.class, (k, v) -> ++v);
+                    }
                 }
             }
+            countMethodAndParameters(clazz.getSuperclass());
         }
-        countMethodAndParameters(clazz.getSuperclass());
-    }
-
-    public Map<Class<?>, Integer> getCounts() {
         return counts;
     }
 }
