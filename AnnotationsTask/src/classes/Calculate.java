@@ -22,15 +22,12 @@ public class Calculate {
             return;
         }
         for (Method method : clazz.getDeclaredMethods()) {
-            int count;
             if (method.isAnnotationPresent(MethodAnnotation.class)) {
-                count = counts.get(MethodAnnotation.class);
-                counts.put(MethodAnnotation.class, ++count);
+                counts.computeIfPresent(MethodAnnotation.class, (k, v) -> ++v);
             }
             for (Parameter parameter : method.getParameters()) {
                 if (parameter.isAnnotationPresent(ParameterAnnotation.class)) {
-                    count = counts.get(ParameterAnnotation.class);
-                    counts.put(ParameterAnnotation.class, ++count);
+                    counts.computeIfPresent(ParameterAnnotation.class, (k, v) -> ++v);
                 }
             }
         }
