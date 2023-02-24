@@ -1,4 +1,4 @@
 firstName=Dmytro
 lastName=Kizerov
+age=32
 phoneNumber=0666334509
-balance=1500.22

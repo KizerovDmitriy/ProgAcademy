@@ -8,11 +8,12 @@ public class Client {
     private String firstName;
     @Save
     private String lastName;
-    private String age;
+    @Save
+    private Integer age;
     @Save
     private String phoneNumber;
 
-    public Client(String firstName, String lastName, String age, String phoneNumber) {
+    public Client(String firstName, String lastName, Integer age, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;

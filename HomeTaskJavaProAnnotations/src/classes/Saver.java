@@ -65,11 +65,11 @@ public class Saver {
                     if (checkClassName(field.getType().getSimpleName())) {
                         Object myObj = field.getType().newInstance();
                         deserializeObject(myObj, path);
-                        field.set(object,myObj);
+                        field.set(object, myObj);
                     } else {
                         for (Map.Entry<String, String> entry : data.entrySet()) {
                             if (entry.getKey().equals(field.getName())) {
-                                field.set(object, entry.getValue());
+                                field.set(object, parseData(checkFieldType(field), entry.getValue()));
                             }
                         }
                     }
@@ -81,6 +81,21 @@ public class Saver {
         } catch (IOException | IllegalAccessException | InstantiationException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private String checkFieldType(Field field) {
+        return field.getType().getSimpleName();
+    }
+
+    private Object parseData(String type, String value) {
+        Object result = null;
+        switch (type) {
+            case "Integer" -> result = Integer.parseInt(value);
+            case "Double" -> result = Double.parseDouble(value);
+            case "String" -> result = value;
+            case "Float" -> result = Float.parseFloat(value);
+        }
+        return result;
     }
 
     public void saveToFile(Class<?> clazz) {
