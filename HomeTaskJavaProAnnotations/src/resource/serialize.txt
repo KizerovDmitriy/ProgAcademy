@@ -1,3 +1,4 @@
 firstName=Dmytro
 lastName=Kizerov
 phoneNumber=0666334509
+balance=1500.22
