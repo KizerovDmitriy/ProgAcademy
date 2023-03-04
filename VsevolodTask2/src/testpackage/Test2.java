@@ -5,7 +5,7 @@ import annotation.Work;
 @Work
 public class Test2 {
 
-    private void test1() {
+    private void test1(int age) {
         System.out.println("Method from " + getClass().getSimpleName());
     }
 

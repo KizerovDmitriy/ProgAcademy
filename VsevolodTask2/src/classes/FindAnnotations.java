@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -23,14 +24,20 @@ public class FindAnnotations {
             try {
                 if (clazz.isAnnotationPresent(Work.class)) {
                     for (Method method : methods) {
-                        method.setAccessible(true);
-                        method.invoke(clazz.newInstance());
+                        Parameter [] parameters = method.getParameters();
+                        if (parameters.length == 0) {
+                            method.setAccessible(true);
+                            method.invoke(clazz.newInstance());
+                        }
                     }
                 } else {
                     for (Method method : methods) {
                         if (method.isAnnotationPresent(Work.class)) {
-                            method.setAccessible(true);
-                            method.invoke(clazz.newInstance());
+                            Parameter [] parameters = method.getParameters();
+                            if (parameters.length == 0) {
+                                method.setAccessible(true);
+                                method.invoke(clazz.newInstance());
+                            }
                         }
                     }
                 }
