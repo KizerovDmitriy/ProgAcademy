@@ -23,24 +23,24 @@ public class MonoBank {
      *
      * @return JSON String representation
      */
-    private String getJson() {
+   private String getJson() {
         String json = "";
         try {
             URL url = new URL("https://api.monobank.ua/bank/currency");
             HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            BufferedReader bf = new BufferedReader(new InputStreamReader(url.openStream()));
-            while (bf.ready()) {
-                json = bf.readLine();
+            try (BufferedReader bf = new BufferedReader(new InputStreamReader(url.openStream()))) {
+                while (bf.ready()) {
+                    json = bf.readLine();
+                }
             }
-            bf.close();
             connection.disconnect();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         return json;
     }
-
+    
     /***
      *
      * @return array of Currency objects
