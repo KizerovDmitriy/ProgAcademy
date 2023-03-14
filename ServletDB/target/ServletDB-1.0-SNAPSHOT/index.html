@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+<table style="width:100%">
+    <tr>
+        <td>
+            <h2>Input clients data</h2>
+
+            <form method="get" action="/addclient">
+                <label for="fname">First name:</label><br>
+                <input type="text" id="fname" name="fname"><br>
+                <label for="lname">Last name:</label><br>
+                <input type="text" id="lname" name="lname"><br>
+                <label for="phone">Phone number:</label><br>
+                <input type="text" id="phone" name="phone"><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </td>
+        <td>
+            <h2>Input product data</h2>
+
+            <form method="get" action="/addproduct">
+                <label for="name">Product name:</label><br>
+                <input type="text" id="name" name="name"><br>
+                <label for="price">Product price:</label><br>
+                <input type="text" id="price" name="price"><br>
+                <label for="quantity">Product quantity:</label><br>
+                <input type="text" id="quantity" name="quantity"><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h2> View all clients</h2>
+            <form method="get" action="/viewclients">
+                <input type="submit" value="Submit">
+            </form>
+        </td>
+        <td>
+            <h2> View all products</h2>
+            <form method="get" action="/viewproduct">
+                <input type="submit" value="Submit">
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

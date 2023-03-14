@@ -1,0 +1,9 @@
+classes\ConnectionFactory.class
+com\example\servletdb\AddClientServlet.class
+com\example\servletdb\HelloServlet.class
+dao\OrdersDAOImpl.class
+classes\Client.class
+dao\OrdersDAO.class
+classes\Product.class
+classes\Id.class
+classes\Order.class
