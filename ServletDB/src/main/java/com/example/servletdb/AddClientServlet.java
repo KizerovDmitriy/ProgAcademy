@@ -22,6 +22,6 @@ public class AddClientServlet extends HttpServlet{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        resp.sendRedirect("index.html");
+        resp.sendRedirect("chooseClient.jsp");
     }
 }

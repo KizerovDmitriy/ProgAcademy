@@ -11,6 +11,18 @@
         <servlet-name>viewproduct</servlet-name>
         <url-pattern>/viewproduct</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vieworders</servlet-name>
+        <url-pattern>/vieworders</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addorder</servlet-name>
+        <url-pattern>/addorder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>chooseClients</servlet-name>
+        <url-pattern>/chooseClients</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
