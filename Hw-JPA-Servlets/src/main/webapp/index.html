@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apartments</title>
+</head>
+<body>
+<table style="width:100%">
+  <tr>
+    <td>
+      <h2>Input apartments data</h2>
+
+      <form method="get" action="/new">
+        <label for="region">Region:</label><br>
+        <input type="text" id="region" name="region"><br>
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address"><br>
+        <label for="area">Area:</label><br>
+        <input type="text" id="area" name="area"><br>
+        <label for="rooms">Rooms:</label><br>
+        <input type="text" id="rooms" name="rooms"><br>
+        <label for="price">Price:</label><br>
+        <input type="text" id="price" name="price"><br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h2> View all apartments</h2>
+      <form method="get" action="/view">
+        <input type="submit" value="Submit">
+      </form>
+    </td>
+    <td>
+      <h2> View apartments by rooms</h2>
+      <form method="get" action="/rooms">
+        <label for="byrooms">Rooms:</label><br>
+        <input type="text" id="byrooms" name="byrooms"><br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </td>
+    <td>
+      <h2> View apartments by region or address</h2>
+      <form method="get" action="/region">
+        <label for="byregion">Region or address:</label><br>
+        <input type="text" id="byregion" name="byregion"><br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </td>
+    <td>
+      <h2> View apartments by price</h2>
+      <form method="get" action="/price">
+        <label for="byprice">Price or area:</label><br>
+        <input type="text" id="byprice" name="byprice"><br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
